@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Museu Virtual Realista</title>
+    <script src="https://aframe.io/releases/1.4.2/aframe.min.js"></script>
+  </head>
+  <body>
+    <a-scene shadow="type: pcfsoft">
+
+      <!-- Luz ambiente e direcional -->
+      <a-entity light="type: ambient; color: #ccc"></a-entity>
+      <a-entity light="type: directional; intensity: 0.8; castShadow: true" position="0 10 5" rotation="-45 0 0"></a-entity>
+
+      <!-- Câmera com controle -->
+      <a-entity camera position="0 1.6 10" look-controls wasd-controls>
+        <a-entity cursor="rayOrigin: mouse" raycaster="objects: .clickable"></a-entity>
+      </a-entity>
+
+      <!-- Piso com textura de madeiraw -->
+      <a-plane 
+        position="0 0 0" 
+        rotation="-90 0 0" 
+        width="30" 
+        height="30" 
+        src="assets/floor-texture.jpg"
+        repeat="10 10"
+        material="roughness: 0.8; metalness: 0.2"
+        shadow
+      ></a-plane>
+
+      <!-- Paredes com textura suave -->
+      <a-box position="0 3 -15" width="30" height="6" depth="0.2" ></a-box> <!--parede da frente-->
+      <a-box position="-15 3 0" rotation="0 90 0" width="30" height="6" depth="0.2" src="assets/wall-marble.jpg"></a-box> <!--parede da esquerda-->
+      <a-box position="15 3 0" rotation="0 -90 0" width="30" height="6" depth="0.2" src="assets/wall-marble.jpg"></a-box> <!--parede da direita-->
+      <a-box position="0 6 0" width="30" height="0.2" depth="30" color="#f4f4f4" src="assets/floor-texture.jpg"></a-box> <!-- teto -->
+
+      <!-- Spots de luz -->
+      <a-entity light="type: spot; intensity: 0.6; angle: 45" position="-10 5 -14" rotation="-90 0 0"></a-entity>
+      <a-entity light="type: spot; intensity: 0.6; angle: 45" position="10 5 -14" rotation="-90 0 0"></a-entity>
+
+      <!-- Bancos -->
+      <a-box position="0 0.25 0" width="3" height="0.5" depth="0.8" color="#8d8d8d"></a-box>
+      <a-box position="-5 0.25 2" width="3" height="0.5" depth="0.8" color="#8d8d8d"></a-box>
+      <a-box position="5 0.25 2" width="3" height="0.5" depth="0.8" color="#8d8d8d"></a-box>
+
+      <!-- Pilares decorativos -->
+      <a-cylinder position="-10 1.5 -10" radius="0.3" height="3" color="#cccccc" src="assets/wall-marble.jpg"></a-cylinder>
+      <a-cylinder position="10 1.5 -10" radius="0.3" height="3" color="#cccccc" src="assets/wall-marble.jpg"></a-cylinder>
+      <a-cylinder position="-10 1.5 10" radius="0.3" height="3" color="#cccccc" src="assets/wall-marble.jpg"></a-cylinder>
+      <a-cylinder position="10 1.5 10" radius="0.3" height="3" color="#cccccc" src="assets/wall-marble.jpg"></a-cylinder>
+
+      <!-- Quadros -->
+      <a-image src="assets/monalisa.jpg" position="-10 2.5 -14.9" width="3" height="3.6"></a-image>
+      
+        <!-- Moldura da Mona Lisa -->
+        <!-- Horizontal (topo e base) -->
+        <a-box position="-10 4.3 -14.88" width="3.1" height="0.1" depth="0.05" color="#5e3b1a"></a-box> <!-- topo -->
+        <a-box position="-10 0.7 -14.88" width="3.1" height="0.1" depth="0.05" color="#5e3b1a"></a-box> <!-- base -->
+
+        <!-- Verticais (lados) -->
+        <a-box position="-11.55 2.5 -14.88" width="0.1" height="3.6" depth="0.05" color="#5e3b1a"></a-box> <!-- esquerda -->
+        <a-box position="-8.45 2.5 -14.88" width="0.1" height="3.6" depth="0.05" color="#5e3b1a"></a-box> <!-- direita -->
+
+
+
+      <a-image src="assets/grito.jpg" position="10 2.5 -14.9" width="3" height="3.6"></a-image>
+      <a-image src="assets/venus.jpg" position="-5 2.5 -14.9" width="3" height="3.6"></a-image>
+      <a-image src="assets/david.jpg" position="5 2.5 -14.9" width="3" height="3.6"></a-image>
+
+    </a-scene>
+  </body>
+</html>
+
+
