@@ -6,7 +6,8 @@
     <script src="https://aframe.io/releases/1.4.2/aframe.min.js"></script>
   </head>
   <body>
-    <a-scene shadow="type: pcfsoft">
+    <a-scene shadow="type: pcfsoft" renderer="antialias: true; shadowMapEnabled: true">
+
 
       <!-- Luz ambiente e direcional -->
       <a-entity light="type: ambient; color: #ccc"></a-entity>
@@ -17,7 +18,7 @@
         <a-entity cursor="rayOrigin: mouse" raycaster="objects: .clickable"></a-entity>
       </a-entity>
 
-      <!-- Piso com textura de madeiraw -->
+      <!-- Piso com textura de madeira -->
       <a-plane 
         position="0 0 0" 
         rotation="-90 0 0" 
@@ -30,19 +31,17 @@
       ></a-plane>
 
       <!-- Paredes com textura suave -->
-      <a-box position="0 3 -15" width="30" height="6" depth="0.2" ></a-box> <!--parede da frente-->
+      <a-box position="0 3 -15" width="30" height="6" depth="0.2" src="assets/wall-marble.jpg"></a-box> <!--parede da frente-->
       <a-box position="-15 3 0" rotation="0 90 0" width="30" height="6" depth="0.2" src="assets/wall-marble.jpg"></a-box> <!--parede da esquerda-->
       <a-box position="15 3 0" rotation="0 -90 0" width="30" height="6" depth="0.2" src="assets/wall-marble.jpg"></a-box> <!--parede da direita-->
       <a-box position="0 6 0" width="30" height="0.2" depth="30" color="#f4f4f4" src="assets/floor-texture.jpg"></a-box> <!-- teto -->
+      <a-box position="0 3 15" width="30" height="6" depth="0.2" src="assets/wall-marble.jpg"></a-box> <!--parede de trás-->
 
-      <!-- Spots de luz -->
-      <a-entity light="type: spot; intensity: 0.6; angle: 45" position="-10 5 -14" rotation="-90 0 0"></a-entity>
-      <a-entity light="type: spot; intensity: 0.6; angle: 45" position="10 5 -14" rotation="-90 0 0"></a-entity>
 
       <!-- Bancos -->
-      <a-box position="0 0.25 0" width="3" height="0.5" depth="0.8" color="#8d8d8d"></a-box>
+      <!-- <a-box position="0 0.25 0" width="3" height="0.5" depth="0.8" color="#8d8d8d"></a-box>
       <a-box position="-5 0.25 2" width="3" height="0.5" depth="0.8" color="#8d8d8d"></a-box>
-      <a-box position="5 0.25 2" width="3" height="0.5" depth="0.8" color="#8d8d8d"></a-box>
+      <a-box position="5 0.25 2" width="3" height="0.5" depth="0.8" color="#8d8d8d"></a-box> -->
 
       <!-- Pilares decorativos -->
       <a-cylinder position="-10 1.5 -10" radius="0.3" height="3" color="#cccccc" src="assets/wall-marble.jpg"></a-cylinder>
@@ -51,22 +50,111 @@
       <a-cylinder position="10 1.5 10" radius="0.3" height="3" color="#cccccc" src="assets/wall-marble.jpg"></a-cylinder>
 
       <!-- Quadros -->
-      <a-image src="assets/monalisa.jpg" position="-10 2.5 -14.9" width="3" height="3.6"></a-image>
+
+      <!-- MONA LISA -->
+      <a-image src="assets/monalisa.jpg" position="-10 2.5 -14.7" width="3" height="3.6"></a-image>
+
+      <a-box position="-10 4.3 -14.69" width="3.1" height="0.1" depth="0.05" src="assets/textura-quadros.jpg"></a-box>
+      <a-box position="-10 0.7 -14.69" width="3.1" height="0.1" depth="0.05" src="assets/textura-quadros.jpg"></a-box>
+      <a-box position="-11.55 2.5 -14.69" width="0.1" height="3.6" depth="0.05" src="assets/textura-quadros.jpg"></a-box>
+      <a-box position="-8.45 2.5 -14.69" width="0.1" height="3.6" depth="0.05" src="assets/textura-quadros.jpg"></a-box>
+
+
+      <!-- O GRITO -->
+      <a-image src="assets/grito.jpg" position="10 2.5 -14.7" width="3" height="3.6"></a-image>
+
+      <a-box position="10 4.3 -14.69" width="3.1" height="0.1" depth="0.05" src="assets/textura-quadros.jpg"></a-box>
+      <a-box position="10 0.7 -14.69" width="3.1" height="0.1" depth="0.05" src="assets/textura-quadros.jpg"></a-box>
+      <a-box position="8.45 2.5 -14.69" width="0.1" height="3.6" depth="0.05" src="assets/textura-quadros.jpg"></a-box>
+      <a-box position="11.55 2.5 -14.69" width="0.1" height="3.6" depth="0.05" src="assets/textura-quadros.jpg"></a-box>
+
+
+      <!-- VÊNUS DE MILO -->
+      <a-image src="assets/venus.jpg" position="-5 2.5 -14.7" width="3" height="3.6"></a-image>
+
+      <a-box position="-5 4.3 -14.69" width="3.1" height="0.1" depth="0.05" src="assets/textura-quadros.jpg"></a-box>
+      <a-box position="-5 0.7 -14.69" width="3.1" height="0.1" depth="0.05" src="assets/textura-quadros.jpg"></a-box>
+      <a-box position="-6.55 2.5 -14.69" width="0.1" height="3.6" depth="0.05" src="assets/textura-quadros.jpg"></a-box>
+      <a-box position="-3.45 2.5 -14.69" width="0.1" height="3.6" depth="0.05" src="assets/textura-quadros.jpg"></a-box>
+
+      <!-- DAVID -->
+      <a-image src="assets/david.jpg" position="5 2.5 -14.7" width="3" height="3.6"></a-image>
+
+      <a-box position="5 4.3 -14.69" width="3.1" height="0.1" depth="0.05" src="assets/textura-quadros.jpg"></a-box>
+      <a-box position="5 0.7 -14.69" width="3.1" height="0.1" depth="0.05" src="assets/textura-quadros.jpg"></a-box>
+      <a-box position="3.45 2.5 -14.69" width="0.1" height="3.6" depth="0.05" src="assets/textura-quadros.jpg"></a-box>
+      <a-box position="6.55 2.5 -14.69" width="0.1" height="3.6" depth="0.05" src="assets/textura-quadros.jpg"></a-box>
+
+
+
+
+
+
+
+
+
+
+
       
-        <!-- Moldura da Mona Lisa -->
-        <!-- Horizontal (topo e base) -->
-        <a-box position="-10 4.3 -14.88" width="3.1" height="0.1" depth="0.05" color="#5e3b1a"></a-box> <!-- topo -->
-        <a-box position="-10 0.7 -14.88" width="3.1" height="0.1" depth="0.05" color="#5e3b1a"></a-box> <!-- base -->
 
-        <!-- Verticais (lados) -->
-        <a-box position="-11.55 2.5 -14.88" width="0.1" height="3.6" depth="0.05" color="#5e3b1a"></a-box> <!-- esquerda -->
-        <a-box position="-8.45 2.5 -14.88" width="0.1" height="3.6" depth="0.05" color="#5e3b1a"></a-box> <!-- direita -->
+      <!-- Candelabro 1 -->
+      <a-cylinder position="-10 5.5 -10" radius="0.03" height="1" color="#333"></a-cylinder> 
+      <a-cylinder position="-10 5 -10" radius="0.15" height="0.3" color="#111" rotation="0 0 0"></a-cylinder> 
+      <a-entity light="type: spot; color: #fff3c2; intensity: 1.5; angle: 45; distance: 20; penumbra: 0.4; decay: 2; castShadow: true" position="-10 4.9 -10" rotation="-90 0 0"></a-entity>
+
+      <!-- Candelabro 2 -->
+      <a-cylinder position="-3.5 5.5 -10" radius="0.03" height="1" color="#333"></a-cylinder>
+      <a-cylinder position="-3.5 5 -10" radius="0.15" height="0.3" color="#111"></a-cylinder>
+      <a-entity light="type: spot; color: #fff3c2; intensity: 1.5; angle: 45; distance: 20; penumbra: 0.4; decay: 2; castShadow: true" position="-3.5 4.9 -10" rotation="-90 0 0"></a-entity>
+
+      <!-- Candelabro 3 -->
+      <a-cylinder position="3.5 5.5 -10" radius="0.03" height="1" color="#333"></a-cylinder>
+      <a-cylinder position="3.5 5 -10" radius="0.15" height="0.3" color="#111"></a-cylinder>
+      <a-entity light="type: spot; color: #fff3c2; intensity: 1.5; angle: 45; distance: 20; penumbra: 0.4; decay: 2; castShadow: true" position="3.5 4.9 -10" rotation="-90 0 0"></a-entity>
+
+      <!-- Candelabro 4 -->
+      <a-cylinder position="10 5.5 -10" radius="0.03" height="1" color="#333"></a-cylinder>
+      <a-cylinder position="10 5 -10" radius="0.15" height="0.3" color="#111"></a-cylinder>
+      <a-entity light="type: spot; color: #fff3c2; intensity: 1.5; angle: 45; distance: 20; penumbra: 0.4; decay: 2; castShadow: true" position="10 4.9 -10" rotation="-90 0 0"></a-entity>
+
+      <!-- Candelabro 5 -->
+      <a-cylinder position="-10 5.5 10" radius="0.03" height="1" color="#333"></a-cylinder>
+      <a-cylinder position="-10 5 10" radius="0.15" height="0.3" color="#111"></a-cylinder>
+      <a-entity light="type: spot; color: #fff3c2; intensity: 1.5; angle: 45; distance: 20; penumbra: 0.4; decay: 2; castShadow: true" position="-10 4.9 10" rotation="-90 0 0"></a-entity>
+
+      <!-- Candelabro 6 -->
+      <a-cylinder position="-3.5 5.5 10" radius="0.03" height="1" color="#333"></a-cylinder>
+      <a-cylinder position="-3.5 5 10" radius="0.15" height="0.3" color="#111"></a-cylinder>
+      <a-entity light="type: spot; color: #fff3c2; intensity: 1.5; angle: 45; distance: 20; penumbra: 0.4; decay: 2; castShadow: true" position="-3.5 4.9 10" rotation="-90 0 0"></a-entity>
+      
+      <!-- Candelabro 7 -->
+      <a-cylinder position="3.5 5.5 10" radius="0.03" height="1" color="#333"></a-cylinder>
+      <a-cylinder position="3.5 5 10" radius="0.15" height="0.3" color="#111"></a-cylinder>
+      <a-entity light="type: spot; color: #fff3c2; intensity: 1.5; angle: 45; distance: 20; penumbra: 0.4; decay: 2; castShadow: true" position="3.5 4.9 10" rotation="-90 0 0"></a-entity>
+
+      <!-- Candelabro 8 -->
+      <a-cylinder position="10 5.5 10" radius="0.03" height="1" color="#333"></a-cylinder>
+      <a-cylinder position="10 5 10" radius="0.15" height="0.3" color="#111"></a-cylinder>
+      <a-entity light="type: spot; color: #fff3c2; intensity: 1.5; angle: 45; distance: 20; penumbra: 0.4; decay: 2; castShadow: true" position="10 4.9 10" rotation="-90 0 0"></a-entity>
+
+      <!-- Texto de boas-vindas com moldura de madeira na parede esquerda -->
+      <a-box position="-14.9 2 0" width="0.1" height="0.8" depth="6.5"></a-box>
+      <a-text value="Bem-vindo ao Museu Virtual" position="-14.80 2 0" rotation="0 90 0" color="#000" align="center" width="5.5"></a-text>
+
+      <a-box position="-14.9 1.5 0" width="0.1" height="0.8" depth="6.5"></a-box>
+      <a-text value="Use WASD para mover e o rato para olhar ao redor" position="-14.80 1.5 0" rotation="0 90 0" color="#000" align="center" width="5.5"></a-text>
+
+      <a-box position="-14.9 1 0" width="0.1" height="0.8" depth="6.5"></a-box>
+      <a-text value="aproxime se dos quadros para ver mais detalhes sobre os mesmos" position="-14.80 1 0" rotation="0 90 0" color="#000" align="center" width="5.5"></a-text>
+
+      <a-box position="-14.9 0.5 0" width="0.1" height="0.8" depth="6.5"></a-box>
+      <a-text value="Desenvolvido por Andre Pinheiro nº 40240449" position="-14.80 0.5 0" rotation="0 90 0" color="#000" align="center" width="5.5"></a-text>
+      
 
 
+        
 
-      <a-image src="assets/grito.jpg" position="10 2.5 -14.9" width="3" height="3.6"></a-image>
-      <a-image src="assets/venus.jpg" position="-5 2.5 -14.9" width="3" height="3.6"></a-image>
-      <a-image src="assets/david.jpg" position="5 2.5 -14.9" width="3" height="3.6"></a-image>
+      
 
     </a-scene>
   </body>
