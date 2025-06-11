@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="pt">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Museu Virtual Realista VR - Uma experiência imersiva em arte">
+    <title>Museu Virtual Realista VR</title>
+    <script src="https://aframe.io/releases/1.4.2/aframe.min.js"></script>
+    <link rel="stylesheet" href="styles/vr.css">
+  </head>
+  <body>
+    <!-- Loading Screen -->
+    <div class="loading-screen">
+      <div class="loading-text">Carregando o Museu Virtual...</div>
+    </div>
+
+    <!-- A-Frame Scene -->
+    <a-scene
+      shadow="type: pcfsoft"
+      renderer="antialias: true; shadowMapEnabled: true"
+      loading-screen="enabled: false"
+      cursor="rayOrigin: mouse"
+      raycaster="objects: .clickable">
+
+      <!-- Asset Management -->
+      <a-assets>
+        <img id="floorTexture" src="assets/floor-texture.jpg" crossorigin="anonymous">
+        <img id="wallMarble" src="assets/wall-marble.jpg" crossorigin="anonymous">
+        <img id="frameTexture" src="assets/textura-quadros.jpg" crossorigin="anonymous">
+        <img id="monalisa" src="assets/monalisa.jpg" crossorigin="anonymous">
+        <img id="grito" src="assets/grito.jpg" crossorigin="anonymous">
+        <img id="venus" src="assets/venus.jpg" crossorigin="anonymous">
+        <img id="david" src="assets/david.jpg" crossorigin="anonymous">
+      </a-assets>
+
+      <!-- Camera -->
+      <a-entity
+        id="rig"
+        position="0 1 10">
+        <a-camera
+          look-controls="pointerLockEnabled: true"
+          wasd-controls="acceleration: 100">
+          <a-entity
+            cursor="fuse: false"
+            raycaster="objects: .clickable"
+            position="0 0 -1"
+            geometry="primitive: ring; radiusInner: 0.01; radiusOuter: 0.02"
+            material="color: white; shader: flat">
+          </a-entity>
+        </a-camera>
+      </a-entity>
+
+      <!-- Lighting -->
+      <a-entity light="type: ambient; color: #BBB; intensity: 0.5"></a-entity>
+      <a-entity light="type: directional; color: #FFF; intensity: 0.8; castShadow: true" position="0 10 5" shadow="mapSize: 2048;"></a-entity>
+
+      <!-- Environment -->
+      <a-plane
+        position="0 0 0"
+        rotation="-90 0 0"
+        width="30"
+        height="30"
+        src="#floorTexture"
+        repeat="10 10"
+        material="roughness: 0.8; metalness: 0.2"
+        shadow="receive: true">
+      </a-plane>
+
+      <!-- Walls -->
+      <a-entity id="walls">
+        <a-box position="0 3 -15" width="30" height="6" depth="0.2" src="#wallMarble"></a-box>
+        <a-box position="-15 3 0" rotation="0 90 0" width="30" height="6" depth="0.2" src="#wallMarble"></a-box>
+        <a-box position="15 3 0" rotation="0 -90 0" width="30" height="6" depth="0.2" src="#wallMarble"></a-box>
+        <a-box position="0 6 0" width="30" height="0.2" depth="30" src="#floorTexture"></a-box>
+        <a-box position="0 3 15" width="30" height="6" depth="0.2" src="#wallMarble"></a-box>
+      </a-entity>
+
+      <!-- Artwork Section -->
+      <a-entity id="artwork">
+        <!-- Mona Lisa -->
+        <a-entity class="painting" position="-10 2.5 -14.7">
+          <a-image
+            src="#monalisa"
+            width="3"
+            height="3.6"
+            class="clickable"
+            painting-info="
+              title: Mona Lisa;
+              artist: Leonardo da Vinci;
+              year: 1503-1519;
+              description: A obra-prima do Renascimento italiano, famosa pelo seu sorriso enigmatico e técnica sfumato. É considerada a pintura mais famosa do mundo."
+            animation__scale="property: scale; to: 1.05 1.05 1.05; dur: 200; startEvents: mouseenter"
+            animation__scale_reverse="property: scale; to: 1 1 1; dur: 200; startEvents: mouseleave">
+          </a-image>
+          <a-entity class="frame">
+            <a-box position="0 1.85 0" width="3.1" height="0.1" depth="0.05" src="#frameTexture"></a-box>
+            <a-box position="0 -1.85 0" width="3.1" height="0.1" depth="0.05" src="#frameTexture"></a-box>
+            <a-box position="-1.55 0 0" width="0.1" height="3.8" depth="0.05" src="#frameTexture"></a-box>
+            <a-box position="1.55 0 0" width="0.1" height="3.8" depth="0.05" src="#frameTexture"></a-box>
+          </a-entity>
+        </a-entity>
+
+        <!-- O Grito -->
+        <a-entity class="painting" position="10 2.5 -14.7">
+          <a-image
+            src="#grito"
+            width="3"
+            height="3.6"
+            class="clickable"
+            painting-info="
+              title: O Grito;
+              artist: Edvard Munch;
+              year: 1893;
+              description: Uma das obras mais iconicas do expressionismo, retratando uma figura angustiada contra um ceu vermelho-alaranjado. Representa a ansiedade da condiçao humana moderna."
+            animation__scale="property: scale; to: 1.05 1.05 1.05; dur: 200; startEvents: mouseenter"
+            animation__scale_reverse="property: scale; to: 1 1 1; dur: 200; startEvents: mouseleave">
+          </a-image>
+          <a-entity class="frame">
+            <a-box position="0 1.85 0" width="3.1" height="0.1" depth="0.05" src="#frameTexture"></a-box>
+            <a-box position="0 -1.85 0" width="3.1" height="0.1" depth="0.05" src="#frameTexture"></a-box>
+            <a-box position="-1.55 0 0" width="0.1" height="3.8" depth="0.05" src="#frameTexture"></a-box>
+            <a-box position="1.55 0 0" width="0.1" height="3.8" depth="0.05" src="#frameTexture"></a-box>
+          </a-entity>
+        </a-entity>
+
+        <!-- Vênus de Milo -->
+        <a-entity class="painting" position="-5 2.5 -14.7">
+          <a-image
+            src="#venus"
+            width="3"
+            height="3.6"
+            class="clickable"
+            painting-info="
+              title: Vênus de Milo;
+              artist: Alexandros de Antioquia;
+              year: 130-100 a.C.;
+              description: Uma das mais famosas esculturas da Grecia antiga, representando Afrodite (Venus). É um icone da beleza classica e da arte helenistica."
+            animation__scale="property: scale; to: 1.05 1.05 1.05; dur: 200; startEvents: mouseenter"
+            animation__scale_reverse="property: scale; to: 1 1 1; dur: 200; startEvents: mouseleave">
+          </a-image>
+          <a-entity class="frame">
+            <a-box position="0 1.85 0" width="3.1" height="0.1" depth="0.05" src="#frameTexture"></a-box>
+            <a-box position="0 -1.85 0" width="3.1" height="0.1" depth="0.05" src="#frameTexture"></a-box>
+            <a-box position="-1.55 0 0" width="0.1" height="3.8" depth="0.05" src="#frameTexture"></a-box>
+            <a-box position="1.55 0 0" width="0.1" height="3.8" depth="0.05" src="#frameTexture"></a-box>
+          </a-entity>
+        </a-entity>
+
+        <!-- David -->
+        <a-entity class="painting" position="5 2.5 -14.7">
+          <a-image
+            src="#david"
+            width="3"
+            height="3.6"
+            class="clickable"
+            painting-info="
+              title: David;
+              artist: Michelangelo;
+              year: 1501-1504;
+              description: Uma obra-prima do Renascimento italiano, esta estátua de mármore representa o herói bíblico David. É considerada um dos maiores trabalhos da arte ocidental."
+            animation__scale="property: scale; to: 1.05 1.05 1.05; dur: 200; startEvents: mouseenter"
+            animation__scale_reverse="property: scale; to: 1 1 1; dur: 200; startEvents: mouseleave">
+          </a-image>
+          <a-entity class="frame">
+            <a-box position="0 1.85 0" width="3.1" height="0.1" depth="0.05" src="#frameTexture"></a-box>
+            <a-box position="0 -1.85 0" width="3.1" height="0.1" depth="0.05" src="#frameTexture"></a-box>
+            <a-box position="-1.55 0 0" width="0.1" height="3.8" depth="0.05" src="#frameTexture"></a-box>
+            <a-box position="1.55 0 0" width="0.1" height="3.8" depth="0.05" src="#frameTexture"></a-box>
+          </a-entity>
+        </a-entity>
+
+        <!-- Pilares decorativos -->
+        <a-cylinder position="-10 1.5 -10" radius="0.6" height="9" color="#cccccc" src="assets/wall-marble.jpg"></a-cylinder>
+        <a-cylinder position="10 1.5 -10" radius="0.6" height="9" color="#cccccc" src="assets/wall-marble.jpg"></a-cylinder>
+        <a-cylinder position="-10 1.5 10" radius="0.6" height="9" color="#cccccc" src="assets/wall-marble.jpg"></a-cylinder>
+        <a-cylinder position="10 1.5 10" radius="0.6" height="9" color="#cccccc" src="assets/wall-marble.jpg"></a-cylinder>
+      </a-entity>
+
+      <!-- Chandeliers -->
+      <a-entity id="chandeliers">
+        <!-- Front Row -->
+        <a-entity chandelier="position: -10 5.5 -5"></a-entity>
+        <a-entity chandelier="position: -3.5 5.5 -10"></a-entity>
+        <a-entity chandelier="position: 3.5 5.5 -10"></a-entity>
+        <a-entity chandelier="position: 10 5.5 -5"></a-entity>
+
+        <!-- Back Row -->
+        <a-entity chandelier="position: -10 5.5 5"></a-entity>
+        <a-entity chandelier="position: -3.5 5.5 10"></a-entity>
+        <a-entity chandelier="position: 3.5 5.5 10"></a-entity>
+        <a-entity chandelier="position: 10 5.5 5"></a-entity>
+      </a-entity>
+
+      <!-- Information Panel -->
+      <a-entity id="info-panel" position="-14.9 2 0">
+        <a-text
+          value="Bem-vindo ao Museu Virtual\n\nUse WASD para mover\nMouse para olhar ao redor\n\nAproxime-se dos quadros\npara mais detalhes\n\nDesenvolvido por\nAndre Pinheiro nº 40240449"
+          position="0 0 0"
+          rotation="0 90 0"
+          color="#000"
+          align="center"
+          width="5.5"
+          baseline="top">
+        </a-text>
+      </a-entity>
+
+    </a-scene>
+
+    <a href="ar.html" class="enter-ar">Entrar em AR</a>
+    <!-- Loading Screen Script -->
+    <script src="js/vr.js"></script>
+  </body>
+</html>
+
+
